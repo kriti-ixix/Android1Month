@@ -9,9 +9,10 @@
         <entry key="app/src/main/res/layout/activity_home_feed.xml" value="0.2078804347826087" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19202898550724637" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_recycler_demo.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_recycler_demo.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/custom_layout.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.4017210144927536" />
+        <entry key="app/src/main/res/layout/custom_layout.xml" value="0.264945652173913" />
       </map>
     </option>
   </component>
