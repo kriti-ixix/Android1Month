@@ -13,7 +13,6 @@ public class DBHelper extends SQLiteOpenHelper
     public static final String DB_NAME = "school";
     public static final String TABLE_NAME = "students";
 
-
     public DBHelper(Context context) {
         super(context, DB_NAME, null, 1);
     }
@@ -33,13 +32,13 @@ public class DBHelper extends SQLiteOpenHelper
         SQLiteDatabase sq = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("name", n);
-        return sq.update(TABLE_NAME, cv, "where rollno = " + rn, null);
+        return sq.update(TABLE_NAME, cv, "rollno = " + rn, null);
     }
 
     int deleteData(int rn)
     {
         SQLiteDatabase sq = this.getWritableDatabase();
-        return sq.delete(TABLE_NAME, "where rollno = " + rn, null);
+        return sq.delete(TABLE_NAME, "rollno = " + rn, null);
     }
 
     @Override
