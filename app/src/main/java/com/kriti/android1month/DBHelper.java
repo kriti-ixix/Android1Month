@@ -2,14 +2,16 @@ package com.kriti.android1month;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper
 {
-
     public static final String DB_NAME = "school";
     public static final String TABLE_NAME = "students";
 
@@ -40,6 +42,45 @@ public class DBHelper extends SQLiteOpenHelper
         SQLiteDatabase sq = this.getWritableDatabase();
         return sq.delete(TABLE_NAME, "rollno = " + rn, null);
     }
+
+    ArrayList<StudentInfo> getAllData()
+    {
+        SQLiteDatabase sq = this.getReadableDatabase();
+        Cursor cursor = sq.rawQuery("select * from " + TABLE_NAME, null);
+
+        ArrayList<StudentInfo> list = new ArrayList<StudentInfo>();
+
+        while (cursor.moveToNext())
+        {
+            StudentInfo stdInfo = new StudentInfo();
+
+            stdInfo.setsRollNo(cursor.getInt(0));
+            stdInfo.setsName(cursor.getString(1));
+            stdInfo.setsMarks(cursor.getDouble(2));
+
+            list.add(stdInfo);
+        }
+
+        return list;
+    }
+
+    StudentInfo getInfo(int roll)
+    {
+        SQLiteDatabase sq = this.getReadableDatabase();
+        Cursor cursor = sq.rawQuery("select * from " + TABLE_NAME + " where rollno = " + roll, null);
+
+        StudentInfo stdInfo = new StudentInfo();
+
+        if (cursor.moveToNext())
+        {
+            stdInfo.setsRollNo(cursor.getInt(0));
+            stdInfo.setsName(cursor.getString(1));
+            stdInfo.setsMarks(cursor.getDouble(2));
+        }
+
+        return stdInfo;
+    }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase)
